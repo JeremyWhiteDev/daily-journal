@@ -1,11 +1,54 @@
 .entryField {
     display: flex;
     flex-direction: column;
-    background-color: red;
-    width: 30%;
+    background-color: tomato;
+    width: 40%;
+    margin: auto;
+}
+
+header {
+    border: 4px solid rgba(255, 99, 71, 0.695);
+    border-radius: 5px;
+    width: 90%;
     margin: auto;
 }
 
 body {
     text-align: center;
+}
+
+li {
+    padding-left: 0;
+    list-style: none;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;    
+    border-radius: 50%;
+    margin: 5px 0px;
+    
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+background-color: tomato;
+}
+
+.nav-btn {
+    width: 100px;
+    padding: 10px;
+    border: 4px solid rgba(255, 99, 71, 0.695);
+    border-radius: 5px;
+    margin: 5px 0px;
+    background-color: whitesmoke;
+    color: tomato;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 99, 71, 0.695);;
+    border: 4px solid whitesmoke;
+    color: whitesmoke;
 }
