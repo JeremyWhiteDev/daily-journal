@@ -1,0 +1,11 @@
+.entryField {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    width: 30%;
+    margin: auto;
+}
+
+body {
+    text-align: center;
+}

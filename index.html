@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Jeremy's Journal</title>
+</head>
+<body>
+    <header>
+        <h1>My Journal Website</h1>
+        <img src="#" alt="Logo for My Journal Website">
+        <h3>by Jeremy White</h3>
+    </header>
+    <Main>
+        <h2>Daily Journal</h2>
+       <form class="entryForm">
+            <fieldset class="entryField">
+                <label for="entryDate">Date of Entry</label>
+                <input type="Date" name="entryDate" class="entryForm_date">
+            </fieldset>
+            <fieldset class="entryField">
+                <label for="conceptsCovered">Concepts Covered</label>
+                <input type="text" name="conceptsCovered" class="entryForm_concepts">
+            </fieldset>
+            <fieldset class="entryField">
+                <label for="journalEntry">Journal Entry</label>
+                <textarea name="journalEntry" class="entryForm_journalEntry" cols="30" rows="10">
+                </textarea>
+            </fieldset>
+            <fieldset class="entryField">
+                <label for="mood">Mood for the Day</label>
+                <select name="mood">
+                    <option value="happy">happy</option>
+                    <option value="sad">sad</option>
+                    <option value="uncertain">uncertain</option>
+                    <option value="amazed">Amazed</option>
+                    <option value="incredible">incredible</option>
+                </select>
+            </fieldset>
+            <input type="button" value="Record Journal Entry" class="btn entryForm_btn">
+        </form>
+    </Main>
+    <footer>
+
+    </footer>
+</body>
+</html>
