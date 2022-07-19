@@ -39,7 +39,7 @@
     background-repeat: no-repeat;
     margin-bottom: 20px;
     
-     filter: blur(2px);
+     filter: blur(4px);
 }
 
 .bg-text {
