@@ -153,6 +153,35 @@ main {
     margin-right: 5px;
 }
 
+.about-me {
+    margin-bottom: 20px;
+}
+
+.pinned-posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 600px;
+}
+
+.pinned-post-card {
+    display: flex;
+    flex-direction: column;
+    
+    width: 90%;
+    height: 150px;
+    margin: auto;
+    border: 4px solid gray;
+    outline: 4px solid tomato;
+    outline-offset: -8px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px gray;
+    text-align: left;
+    padding: 0 8px;
+    box-sizing: border-box;
+
+
+}
 footer {
     margin-top: 20px;
     width: 100%;
