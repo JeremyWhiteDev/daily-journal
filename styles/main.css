@@ -1,12 +1,8 @@
+/* whole body styles */
 body {
     text-align: center;
     font-family: 'Edu VIC WA NT Beginner', cursive;
     background-color: whitesmoke;
-}
-
-li {
-    padding-left: 0;
-    list-style: none;
 }
 
 main {
@@ -17,6 +13,13 @@ main {
     border-radius: 20px;
     box-shadow: 0 0 10px black;
 }
+
+/* navbar  styles*/
+li {
+    padding-left: 0;
+    list-style: none;
+}
+
 
 .navbar {
     display: flex;
@@ -60,13 +63,15 @@ main {
     cursor: pointer;
 }
 
-.logo {
+.nav-logo {
     width: 50px;
     height: 50px;    
     border-radius: 50%;
     margin: 5px 0px;
 }
 
+
+/* hero section styles */
 .hero-section {
     border-radius: 20px;
     width: 90%;
@@ -93,6 +98,7 @@ main {
     transform: translate(-50%, -50%);
 }
 
+/* All Entry window styles */
 .top-section {
     display: flex;
     flex-direction: column;
@@ -161,6 +167,7 @@ main {
     width: 25px;
 }
 
+/* sidebar styles */
 .right-sidebar {
     /* flex-grow: 1; */
     width: 35%;
@@ -171,6 +178,7 @@ main {
     background-color: gainsboro;
 }
 
+/* bio section styles */
 .headshot-img {
     width: 40%;
     margin-top: 30px;
@@ -179,15 +187,17 @@ main {
 }
 
 .about-me {
+    padding: 0 10px;
     margin-bottom: 20px;
     font-size: 1.2em;
 }
 
-.social {
+.social-icon {
     width: 40px;
     margin: 0 5px;
 }
 
+/* pinned post section and card styles */
 .pinned-posts {
     display: flex;
     flex-direction: column;
@@ -206,7 +216,6 @@ main {
 .pinned-post-card {
     display: flex;
     flex-direction: column;
-    
     width: 90%;
     height: 150px;
     margin: auto;
@@ -256,7 +265,7 @@ main {
     text-align: center;
 }
 
-
+/* journal entry form styles */
 .entryField {
     display: flex;
     flex-direction: column;
@@ -286,6 +295,7 @@ main {
     cursor: pointer;
 }
 
+/* footer styles */
 footer {
     margin-top: 20px;
     width: 100%;
