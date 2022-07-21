@@ -24,7 +24,7 @@
     <header>
         <div class="hero-section"></div>
     </header>
-    <div class="bg-text">
+    <div class="background-caption">
         <h1>I am Jeremy White</h1>
         <p>this is my coding journal</p>
       </div>
@@ -51,11 +51,9 @@
                 <fieldset class="entryField">
                     <label for="mood">Mood for the Day</label>
                     <select name="mood">
-                        <option value="happy">happy</option>
-                        <option value="sad">sad</option>
-                        <option value="uncertain">uncertain</option>
-                        <option value="amazed">Amazed</option>
-                        <option value="incredible">incredible</option>
+                        <option value="happy">😃 Happy 😃</option>
+                        <option value="sad">🙁 Sad 🙁</option>
+                        <option value="curious">🤔 Curious 🤔</option>
                     </select>
                 </fieldset>
                 <input type="button" value="Record Journal Entry" class="btn entryForm_btn">
@@ -64,22 +62,30 @@
     
         <aside class="right-sidebar">
             <div class="about-me">
-                <section class="headshot"><img class="headshot-img" src="#" alt="An image of Jeremy looking at the camera and smiling"></section>
+                <section class="headshot"><img class="headshot-img" src="./images/jeremy-headshot-comp.jpg" alt="An image of Jeremy looking at the camera and smiling"></section>
 
                 <section class="bio">
                     <p>An eager learner with hopes of being a software developer.</p>
                 </section>
-                <section class="connect-links">
-                    <img class="linkedin" src="#">
-                    <img class="github" src="#">
-                    <img class="email" src="#">
+                <section class="link-list">
+                    <a href="https://www.linkedin.com/in/jeremy-white-nashville/" target="_blank">
+                        <img class="linkedin social" src="./images/LinkedIn Social.png">
+                    </a>
+                    <a href="https://github.com/JeremyWhiteDev" target="_blank">
+                        <img class="github social" src="./images/GitHub-Social.png">
+                    </a>
+                    <a href="mailto:jcwhite414@gmail.com">
+                        <img class="email social" src="./images/email-social.png">
+                    </a>
                 </section>
              </div>
             <section class="pinned-posts">
+                <h2>Pinned posts</h2>
                 <section class="pinned-post-card"> 
                     <section class="card-info">
+                        
                         <div>
-                            <h3>7-17-22</h3>
+                            <h3>7-19-22</h3>
                             <h3>Git and Github</h3>
                         </div>
                         <p class="card-emoji">😃</p>
@@ -91,19 +97,31 @@
                 </section>
                 <section class="pinned-post-card">
                     <section class="card-info">
-                        
-
-
+                        <div>
+                            <h3>7-17-22</h3>
+                            <h3>HTML & CSS</h3>
+                        </div>
+                        <p class="card-emoji">🙁</p>
                     </section>
                     <section class="card-content">
-                        
+                        <p class="card-text">Organizing CSS rules is overwhelming.
+                        </p>
+
+
                     </section>
+                    
                 </section>
                 <section class="pinned-post-card">
                     <section class="card-info">
-
+                        <div>
+                            <h3>7-15-22</h3>
+                            <h3>Flexbox</h3>
+                        </div>
+                        <p class="card-emoji">🤔</p>
                     </section>
                     <section class="card-content">
+                        <p class="card-text">Flexbox is super powerful. Are there limits to when to use it or when to just use positioning properties?
+                        </p>
                         
                     </section>
                 </section>
@@ -111,7 +129,7 @@
         </aside>
     </Main>
     <footer>
-        Footer Links Here!
+        <p>Designed by Jeremy White © 2022</p>
     </footer>
 </body>
 </html>
