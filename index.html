@@ -21,17 +21,26 @@
             <p class="nav-author">by Jeremy White</p>
        </div>
     </nav>
+ <!-- ^Navbar to navigate to different pages in the future that are all posts by category? -->
+
     <header>
         <div class="hero-section"></div>
     </header>
+    <!-- ^empty header to add bg hero image via CSS -->
+
     <div class="background-caption">
         <h1>I am Jeremy White</h1>
         <p>this is my daily coding journal</p>
-      </div>
+    </div>
+    <!-- ^caption to overlay bg hero image -->
+
     <Main>
        <div class="top-section">
         <section class="all-entries">
             <h2>All Journal Entries</h2>
+
+            <!-- Entry Cards Start. TODO: add Pin button to the cards so each post can be pinned to the sidebar. add pagination to show 3-4 posts at a time in this window. -->
+
             <section class="entry-post-card"> 
                 <section class="entry-card-info">                      
                     <div>
@@ -49,6 +58,8 @@
                     <img class="entry-btn delete-icon" src="./images/Trash Can Icon.png">
                 </section>
             </section>
+            
+
 
             <section class="entry-post-card"> 
                 <section class="entry-card-info">                      
@@ -87,8 +98,11 @@
                 
             </section>
 
+            <!-- Entry Cards End -->
+
         </section>
         <form class="entryForm">
+            <!-- form Start -->
             <h2>Have you made your entry today?!?</h2>
 
                 <fieldset class="entryField">
@@ -121,6 +135,7 @@
      </div>
     
         <aside class="right-sidebar">
+            <!-- bio -->
             <div class="about-me">
 
                 <section class="headshot"><img class="headshot-img" src="./images/jeremy-headshot-comp.jpg" alt="An image of Jeremy looking at the camera and smiling">
@@ -143,7 +158,11 @@
              </div>
 
             <section class="pinned-posts">
+                
                 <h2>Pinned posts</h2>
+
+                <!-- abbreviated, smaller cards of pinned posts. Stretch: get the full post to pop up when clicking on each card. 
+                    TODO: remove the overflow and content, just have the date and concepts covered text with the emoji.   -->
                 <section class="pinned-post-card"> 
                     <section class="card-info">                      
                         <div>
