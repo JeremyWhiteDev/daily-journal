@@ -1,5 +1,4 @@
 # Jeremy White's Daily Journal
-
 An application to log, organize, and review short journal entries relating to a coding journey. 
 
 ### How to Use
