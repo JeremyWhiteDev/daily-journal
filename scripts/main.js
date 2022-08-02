@@ -21,4 +21,24 @@ const journalEntries = [
         mood: "happy"
     }
 ];
-console.log(journalEntries);
+// console.log(journalEntries);
+
+// for (const target of journalEntries) {
+//     {
+//         console.log(target.entry);
+//     }
+// }
+
+
+// for (const target of journalEntries) {
+//     {
+//         console.log(target.concepts);
+//     }
+// }
+
+
+// for (const target of journalEntries) {
+//     if (target.id % 2 !== 0) {
+//         console.log(target.entry);
+//     }
+// }
