@@ -5,6 +5,10 @@ body {
     background-color: whitesmoke;
 }
 
+body a {
+    text-decoration: none;
+}
+
 main {
     display: flex;
     width: 90%;
@@ -110,7 +114,7 @@ li {
 .all-entries {
     border-radius: 20px;
     
-    /* border: 1px solid black; */
+ 
     margin-right: 5px;
     background-color: whitesmoke;
 }
