@@ -1,7 +1,5 @@
-
 import {getEntries} from "./entries.js"
 //^importing journal entry duplication function
-
 
 //OBJECTIVE: Write a function that takes in the date from the journal entry and returns the day of the week that entry occurred. Display the day of the week in the journal entry card.
 
@@ -15,41 +13,38 @@ const findDay = (date) => {
 const journalEntries = getEntries();
 //^create copy in the global scope of this moddule so it can be accessed with sort function...
 
-
 //OBJECTIVE: Greate a function that can take any array as an argument (important for sorting later on!) and that iterates over that array and "dresses it up" in HTML, inserting it on the DOM.
 const displayEntries = (array) => {
-
-let htmlSection = "";
-for (const entry of array) {
-    let entryMood = "";
-    if (entry.mood === "happy") {
-        entryMood = "😃"
-    } else if (entry.mood === "sad") {
-        entryMood = "🙁"
-    } else if (entry.mood === "curious") {
-        entryMood = "🤔"
+    let htmlSection = "";
+    for (const entry of array) {
+        let entryMood = "";
+        if (entry.mood === "happy") {
+            entryMood = "😃"
+        } else if (entry.mood === "sad") {
+            entryMood = "🙁"
+        } else if (entry.mood === "curious") {
+            entryMood = "🤔"
+        }
+        htmlSection += `<section class="entry-post-card"> 
+        <section class="entry-card-info">                      
+        <h3>${findDay(entry.date)} 
+        ${entry.date}</h3>
+        <div>
+        <h3>${entry.concepts}</h3>
+        </div>
+        <p class="card-emoji">${entryMood}</p>
+        </section>
+        <section class="card-content">
+        <p class="entry-card-text">${entry.content}
+        </p>
+        </section>
+        <section class="entry-card-buttons">
+        <img class="entry-btn edit-icon" src="./images/Edit Icon.png">
+        <img class="entry-btn delete-icon" src="./images/Trash Can Icon.png">
+        </section>
+        </section>`
     }
-    htmlSection += `<section class="entry-post-card"> 
-    <section class="entry-card-info">                      
-    <h3>${findDay(entry.date)} 
-    ${entry.date}</h3>
-    <div>
-    <h3>${entry.concepts}</h3>
-    </div>
-    <p class="card-emoji">${entryMood}</p>
-    </section>
-    <section class="card-content">
-    <p class="entry-card-text">${entry.content}
-    </p>
-    </section>
-    <section class="entry-card-buttons">
-    <img class="entry-btn edit-icon" src="./images/Edit Icon.png">
-    <img class="entry-btn delete-icon" src="./images/Trash Can Icon.png">
-    </section>
-    </section>`
- }
-    
-document.getElementById("entries").innerHTML = htmlSection;
+    document.getElementById("entries").innerHTML = htmlSection;
 }
 
 // displayEntries(journalEntries)
@@ -91,7 +86,6 @@ const displayForm = () => {
 
 displayForm()
 //^puts the displayForm on the page right away
-
 
 //OBJECTIVE: create a way to filter array by mood. by the user interacting with the HTML
 const moodBtns = document.querySelectorAll(".mood-btn")
@@ -149,7 +143,6 @@ const sortArray = () => {
     }
     displayEntries(journalEntries)
 }
-
 
 displayEntries(journalEntries)
 //^puts unsorted JournalEntries on page by default.
