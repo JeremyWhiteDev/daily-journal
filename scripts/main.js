@@ -13,3 +13,5 @@ const mainContainer = document.getElementById("entries");
 document.addEventListener("stateChanged", (event) => {
   render();
 });
+
+render();

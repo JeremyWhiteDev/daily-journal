@@ -52,73 +52,71 @@ export const JournalEntries = () => {
         </section>`;
     }
     document.getElementById("entries").innerHTML = htmlSection;
-    displayEntries(journalEntries);
   };
-};
+  displayEntries(journalEntries);
+  // displayEntries(journalEntries)
+  //^Testing function
 
-// displayEntries(journalEntries)
-//^Testing function
+  //OBJECTIVE: create a way to filter array by mood. by the user interacting with the HTML
+  const moodBtns = document.querySelectorAll(".mood-btn");
+  console.log(moodBtns);
 
-//OBJECTIVE: create a way to filter array by mood. by the user interacting with the HTML
-const moodBtns = document.querySelectorAll(".mood-btn");
-console.log(moodBtns);
-
-moodBtns.forEach((btn) => {
-  //add click event listener for each button that runs a function when clicked.
-  btn.addEventListener("click", (e) => {
-    const allJournalEntries = getEntries();
-    //get current target (button that is clicked) data id.
-    const selectedMood = e.currentTarget.dataset.id;
-    //create a filtered array based on the clicked button
-    const entryMoodArray = allJournalEntries.filter((entry) => {
-      if (entry.mood === selectedMood) {
-        return entry;
+  moodBtns.forEach((btn) => {
+    //add click event listener for each button that runs a function when clicked.
+    btn.addEventListener("click", (e) => {
+      const allJournalEntries = getEntries();
+      //get current target (button that is clicked) data id.
+      const selectedMood = e.currentTarget.dataset.id;
+      //create a filtered array based on the clicked button
+      const entryMoodArray = allJournalEntries.filter((entry) => {
+        if (entry.mood === selectedMood) {
+          return entry;
+        }
+      });
+      //displays original array for "all" button
+      if (selectedMood === "all") {
+        displayEntries(allJournalEntries);
+      }
+      //displays filtered array
+      else {
+        displayEntries(entryMoodArray);
       }
     });
-    //displays original array for "all" button
-    if (selectedMood === "all") {
-      displayEntries(allJournalEntries);
-    }
-    //displays filtered array
-    else {
-      displayEntries(entryMoodArray);
-    }
   });
-});
 
-//OBJECTIVE: create a way to sort the entries based on mood, date, or concepts. By the user interacting with the HTML
-const sortElement = document.getElementById("sort");
-//^fetches element, so that the value of that element can be read for sorting/displaying
+  //OBJECTIVE: create a way to sort the entries based on mood, date, or concepts. By the user interacting with the HTML
+  const sortElement = document.getElementById("sort");
+  //^fetches element, so that the value of that element can be read for sorting/displaying
 
-const sortArray = () => {
-  const journalEntries = getEntries();
-  //if the value of sort === date, run this code
-  if (sortElement.value === "date-asc") {
-    journalEntries.sort((a, b) => {
-      return a.id - b.id;
-    });
-  } else if (sortElement.value === "date-des") {
-    journalEntries.sort((a, b) => {
-      return b.id - a.id;
-    });
-  }
-  //if the value of sort === mood, run this code, using localeCompare to sort strings
-  else if (sortElement.value === "mood") {
-    journalEntries.sort((a, b) => {
-      return a.mood.localeCompare(b.mood);
-    });
-    //if the value of sort === concepts, run this code, using localeCompare to sort Strings
-  } else if (sortElement.value === "concepts") {
-    journalEntries.sort((a, b) => {
-      return a.concepts.localeCompare(b.concepts);
-    });
-  }
-  displayEntries(journalEntries);
+  const sortArray = () => {
+    const journalEntries = getEntries();
+    //if the value of sort === date, run this code
+    if (sortElement.value === "date-asc") {
+      journalEntries.sort((a, b) => {
+        return a.id - b.id;
+      });
+    } else if (sortElement.value === "date-des") {
+      journalEntries.sort((a, b) => {
+        return b.id - a.id;
+      });
+    }
+    //if the value of sort === mood, run this code, using localeCompare to sort strings
+    else if (sortElement.value === "mood") {
+      journalEntries.sort((a, b) => {
+        return a.mood.localeCompare(b.mood);
+      });
+      //if the value of sort === concepts, run this code, using localeCompare to sort Strings
+    } else if (sortElement.value === "concepts") {
+      journalEntries.sort((a, b) => {
+        return a.concepts.localeCompare(b.concepts);
+      });
+    }
+    displayEntries(journalEntries);
+  };
+  sortElement.addEventListener("change", sortArray);
 };
 
 //^puts unsorted JournalEntries on page by default.
-
-sortElement.addEventListener("change", sortArray);
 
 //^listens for dropdown menu selection to change, and runs sort array when that value does change.
 
