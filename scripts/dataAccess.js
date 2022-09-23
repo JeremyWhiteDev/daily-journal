@@ -51,3 +51,11 @@ export const addNewEntry = async (entryObj) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
   return response;
 };
+
+export const deleteEntry = async (id) => {
+  const response = await fetch(`${API}/journalEntries/${id}`, {
+    method: "DELETE",
+  });
+  const responseJson = await response.json();
+  document.dispatchEvent(new CustomEvent("stateChanged"));
+};

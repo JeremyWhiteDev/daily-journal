@@ -1,3 +1,6 @@
+import { addNewEntry } from "./dataAccess.js";
+
+//TODO change how date is captured using javascript date class
 export const displayForm = () => {
   let htmlSection = `<h2>Have you made your entry today?!?</h2>
   
