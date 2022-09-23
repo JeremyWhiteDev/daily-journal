@@ -1,47 +1,125 @@
-const journalEntries = [
-    {
-        id: 2,
-        date: "7-17-22",
-        concepts: "HTML and CSS",
-        content: "Organizing CSS rules is overwhelming. Already in my Daily Journal project I have over 250 lines of CSS. I think now that I could refactor most of that code and use helper or utility classes and styling so as not to copy and past so many of the same CSS properties, such as border, box shadow, Flexbox, etc.",
-        mood: "sad"
-    },
-    {
-        id: 1,
-        date: "7-15-22",
-        concepts: "Flexbox",
-        content: "Flexbox is super powerful. Are there limits to when to use it or when to just use positioning properties? The amount of items in my daily journal app with display:flex is kind of bananas. In one card I'm using it like three different times! Are there better conventions for laying things out using other positioning properties?",
-        mood: "curious"
-    },
-    {
-        id: 3,
-        date: "7-19-22",
-        concepts: "Git and Github",
-        content: "Committing early and often in Git is very important. I learned today that we shouldn't be afraid of doing too many commits. Usually these commits will be on a separate branch, so they won't interfere with someone else's workflow.",
-        mood: "happy"
-    },
-    {
-        id: 4,
-        date: "8-10-22",
-        concepts: "HTML and CSS",
-        content: "This is an entry about HTML WOOT",
-        mood: "happy"
-    },
-    {
-        id: 5,
-        date: "8-15-22",
-        concepts: "Javascript",
-        content: "Javascript is FUN",
-        mood: "happy"
-    },
-];
+import { getEntries } from "./dataAccess.js";
+//^importing journal entry duplication function
 
+//OBJECTIVE: Write a function that takes in the date from the journal entry and returns the day of the week that entry occurred. Display the day of the week in the journal entry card.
 
-//TO DO: Add seperate data structures for concepts and mood?
+export const JournalEntries = () => {
+  const journalEntries = getEntries();
+  const findDay = (date) => {
+    const d = new Date(date);
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const day = daysOfWeek[d.getDay()];
+    return day;
+  };
 
+  //OBJECTIVE: Greate a function that can take any array as an argument (important for sorting later on!) and that iterates over that array and "dresses it up" in HTML, inserting it on the DOM.
+  const displayEntries = (array) => {
+    let htmlSection = "";
+    for (const entry of array) {
+      let entryMood = "";
+      if (entry.mood === "happy") {
+        entryMood = "😃";
+      } else if (entry.mood === "sad") {
+        entryMood = "🙁";
+      } else if (entry.mood === "curious") {
+        entryMood = "🤔";
+      }
+      htmlSection += `<section class="entry-post-card"> 
+        <section class="entry-card-info">                      
+        <h3>${findDay(entry.date)} 
+        ${entry.date}</h3>
+        <div>
+        <h3>${entry.concepts}</h3>
+        </div>
+        <p class="card-emoji">${entryMood}</p>
+        </section>
+        <section class="card-content">
+        <p class="entry-card-text">${entry.content}
+        </p>
+        </section>
+        <section class="entry-card-buttons">
+        <img class="entry-btn edit-icon" src="./images/Edit Icon.png">
+        <img class="entry-btn delete-icon" src="./images/Trash Can Icon.png">
+        </section>
+        </section>`;
+    }
+    document.getElementById("entries").innerHTML = htmlSection;
+    displayEntries(journalEntries);
+  };
+};
 
-export const getEntries = () => {
-    const entriesCopy = journalEntries.map(obj => ({...obj}))
-    return entriesCopy;
-}
+// displayEntries(journalEntries)
+//^Testing function
 
+//OBJECTIVE: create a way to filter array by mood. by the user interacting with the HTML
+const moodBtns = document.querySelectorAll(".mood-btn");
+console.log(moodBtns);
+
+moodBtns.forEach((btn) => {
+  //add click event listener for each button that runs a function when clicked.
+  btn.addEventListener("click", (e) => {
+    const allJournalEntries = getEntries();
+    //get current target (button that is clicked) data id.
+    const selectedMood = e.currentTarget.dataset.id;
+    //create a filtered array based on the clicked button
+    const entryMoodArray = allJournalEntries.filter((entry) => {
+      if (entry.mood === selectedMood) {
+        return entry;
+      }
+    });
+    //displays original array for "all" button
+    if (selectedMood === "all") {
+      displayEntries(allJournalEntries);
+    }
+    //displays filtered array
+    else {
+      displayEntries(entryMoodArray);
+    }
+  });
+});
+
+//OBJECTIVE: create a way to sort the entries based on mood, date, or concepts. By the user interacting with the HTML
+const sortElement = document.getElementById("sort");
+//^fetches element, so that the value of that element can be read for sorting/displaying
+
+const sortArray = () => {
+  const journalEntries = getEntries();
+  //if the value of sort === date, run this code
+  if (sortElement.value === "date-asc") {
+    journalEntries.sort((a, b) => {
+      return a.id - b.id;
+    });
+  } else if (sortElement.value === "date-des") {
+    journalEntries.sort((a, b) => {
+      return b.id - a.id;
+    });
+  }
+  //if the value of sort === mood, run this code, using localeCompare to sort strings
+  else if (sortElement.value === "mood") {
+    journalEntries.sort((a, b) => {
+      return a.mood.localeCompare(b.mood);
+    });
+    //if the value of sort === concepts, run this code, using localeCompare to sort Strings
+  } else if (sortElement.value === "concepts") {
+    journalEntries.sort((a, b) => {
+      return a.concepts.localeCompare(b.concepts);
+    });
+  }
+  displayEntries(journalEntries);
+};
+
+//^puts unsorted JournalEntries on page by default.
+
+sortElement.addEventListener("change", sortArray);
+
+//^listens for dropdown menu selection to change, and runs sort array when that value does change.
+
+//TODO: Think of a way to have the filtered array interact with filter options. currently, sorting then filtering works, but filtering then sorting doesn't, because the filter returns a new array that the sort fucntion doesn't know about.
