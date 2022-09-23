@@ -1,4 +1,5 @@
 import { getEntries, deleteEntry } from "./dataAccess.js";
+
 //^importing journal entry duplication function
 
 //OBJECTIVE: Write a function that takes in the date from the journal entry and returns the day of the week that entry occurred. Display the day of the week in the journal entry card.
