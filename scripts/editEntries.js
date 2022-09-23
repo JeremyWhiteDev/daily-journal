@@ -15,8 +15,10 @@
 
 import { getEntries, updateEntry } from "./dataAccess.js";
 
-const displayUpdateEntryForm = (obj) => {
+export const displayUpdateEntryForm = (obj) => {
   return `
+  <div id="edit-entry-container">
+  <form class="edit-entry-form">
 <fieldset class="entryField">
     <label for="conceptsCovered">Concepts Covered</label>
     <input type="text" name="conceptsCovered" class="entryForm_concepts" value="${obj.concepts}">
@@ -24,20 +26,25 @@ const displayUpdateEntryForm = (obj) => {
 
 <fieldset class="entryField">
     <label for="journalEntry">Journal Entry</label>
-    <textarea name="journalEntry" class="entryForm_journalEntry" cols="30" rows="10" value="${obj.content}">
+    <textarea name="journalEntry" class="entryForm_journalEntry" cols="30" rows="10" value="">${obj.content}
     </textarea>
 </fieldset>
 
 
 
 <input id="updateBtn" type="button"value="Update Journal Entry" class="btn entryForm_btn">
-</form>`;
+</form>
+</div>`;
 };
 
 document.addEventListener("click", (e) => {
   if (e.target.id.startsWith("editBtn")) {
     const entries = getEntries();
-    const [, entryId] = parseInt(e.target.id.split("--"));
-    const foundEntry = entries.find((entry) => entry.id === entryId);
+    const [, entryId] = e.target.id.split("--");
+    const foundEntry = entries.find((entry) => entry.id === parseInt(entryId));
+
+    document.getElementById("modal").innerHTML =
+      displayUpdateEntryForm(foundEntry);
+    // document.getElementById("overlay").classList.add("active");
   }
 });

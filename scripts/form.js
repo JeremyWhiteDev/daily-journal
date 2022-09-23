@@ -30,7 +30,7 @@ export const displayForm = () => {
                   </fieldset>
   
                   <input id="submitBtn" type="button"value="Record Journal Entry" class="btn entryForm_btn">
-              </form>`;
+              `;
   document.getElementById("entryForm").innerHTML = htmlSection;
 };
 
