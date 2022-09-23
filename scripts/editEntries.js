@@ -11,6 +11,7 @@
 //
 //have an empty div that I can use to tartget and display a form indise of
 //have the form populated by the values of the object(s) that were clicked on
+
 //render a cancel and a submit button that takes the values of the edit form and updates the current data by calling an updateData Function
 
 import { getEntries, updateEntry } from "./dataAccess.js";
@@ -45,6 +46,16 @@ document.addEventListener("click", (e) => {
 
     document.getElementById("modal").innerHTML =
       displayUpdateEntryForm(foundEntry);
-    // document.getElementById("overlay").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
   }
 });
+//TODO Render a cancel button in the form
+
+//TODO handle logic for canceling or clicking outside modal to close it
+//modal.innerhtml = "" ?
+
+// TODO handle logic for update entry click event,
+//pushing to storage
+//re-render page (dispatch stagechanged event listener)
+
+//TODO deal with how to update mood?
