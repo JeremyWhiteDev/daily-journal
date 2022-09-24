@@ -60,17 +60,14 @@ export const deleteEntry = async (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
-export const updateEntry = async (entryObj) => {
+export const updateEntry = async (id, entryObj) => {
   const fetchOptions = {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(entryObj),
   };
-  const response = await fetch(
-    `${API}/journalEntries/${entryObj.id}`,
-    fetchOptions
-  );
+  const response = await fetch(`${API}/journalEntries/${id}`, fetchOptions);
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
