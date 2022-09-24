@@ -1,3 +1,5 @@
+@import url("./modal.css");
+
 /* whole body styles */
 body {
     text-align: center;
@@ -97,9 +99,9 @@ li {
     font-weight: bold;
     border: 3px solid #f1f1f1;
     position: absolute;
-    top: 50%; 
+    top: 37%; 
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
 }
 
 /* All Entry window styles */
