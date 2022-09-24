@@ -1,10 +1,12 @@
 const API = "http://localhost:8000";
+//TODO: Add seperate data structures for concepts and mood?
 
 //declare application state to store data locally after fetching from API
 const applicationState = {
   journalEntries: [],
 };
 
+//Fetch data and also copy data from application state.
 export const fetchEntries = async () => {
   //1. fetch data from API
   const data = await fetch(`${API}/journalEntries`);
@@ -14,11 +16,6 @@ export const fetchEntries = async () => {
   applicationState.journalEntries = jsData;
 };
 
-//create data access logic
-//1. export fetch calls
-
-//TODO: Add seperate data structures for concepts and mood?
-
 export const getEntries = () => {
   const entriesCopy = applicationState.journalEntries.map((obj) => ({
     ...obj,
@@ -26,14 +23,7 @@ export const getEntries = () => {
   return entriesCopy;
 };
 
-// const getNewId = () => {
-//   let highestId = 0;
-//   if (journalEntries.length > 0) {
-//     highestId = journalEntries.sort((a, b) => b.id - a.id)[0].id;
-//   }
-//   return highestId + 1;
-// };
-
+//Add a new entry
 export const addNewEntry = async (entryObj) => {
   //declare fetchOptions
   const fetchOptions = {
@@ -52,6 +42,7 @@ export const addNewEntry = async (entryObj) => {
   return response;
 };
 
+//Delete an entry
 export const deleteEntry = async (id) => {
   const response = await fetch(`${API}/journalEntries/${id}`, {
     method: "DELETE",
@@ -60,6 +51,7 @@ export const deleteEntry = async (id) => {
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
+// partiually Update an entry using patch method
 export const updateEntry = async (id, entryObj) => {
   const fetchOptions = {
     method: "PATCH",

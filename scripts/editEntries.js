@@ -2,7 +2,7 @@
 //create updateEntry logic in dataAccess that takes in an argument and uses fetch and PUT method to update data.
 //write data to application State before put?
 //export updateEntry
-//DONE
+//^ALL DONE
 
 //editEntries TODO
 //import updateEntry
@@ -13,9 +13,11 @@
 //have the form populated by the values of the object(s) that were clicked on
 
 //render a cancel and a submit button that takes the values of the edit form and updates the current data by calling an updateData Function
+//^ALL DONE
 
-import { addNewEntry, getEntries, updateEntry } from "./dataAccess.js";
+import { getEntries, updateEntry, deleteEntry } from "./dataAccess.js";
 
+//returns html that will display currently clicked on object's properties
 export const displayUpdateEntryForm = (obj) => {
   return `
   <div id="edit-entry-container">
@@ -39,6 +41,7 @@ export const displayUpdateEntryForm = (obj) => {
 </div>`;
 };
 
+//When the edit button is clicked, capture the id of the button that was clicked on, use that id to find the matching object, put that object through our function that handles how to display an object, and put the result in an empty div on the DOM. add a classlist to our Overlay that gives it opacity.
 document.addEventListener("click", (e) => {
   if (e.target.id.startsWith("editBtn")) {
     const entries = getEntries();
@@ -50,6 +53,8 @@ document.addEventListener("click", (e) => {
     document.getElementById("overlay").classList.add("active");
   }
 });
+
+//when the update entry button is clicked, once again grab the entry id of the targeted object, assign the values from the form fields to a new object that has the same properties as our data, use function that patches the selected obj with the new data, reset modal div to empty and hide the overlay.
 document.addEventListener("click", (e) => {
   if (e.target.id.startsWith("updateBtn")) {
     const [, entryId] = e.target.id.split("--");
@@ -67,6 +72,8 @@ document.addEventListener("click", (e) => {
     document.getElementById("overlay").classList.remove("active");
   }
 });
+
+//when the close button on the modal or if the user clicks outsidde the modal, then reset modal to empty and remove overlay class that makes it visible
 document.addEventListener("click", (e) => {
   if (e.target.id === "closeModalBtn" || e.target.id === "overlay") {
     document.getElementById("modal").innerHTML = "";
@@ -74,8 +81,11 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// TODO handle logic for update entry click event,
-//pushing to storage
-//re-render page (dispatch stagechanged event listener)
-
+//delete a specific entry
+document.addEventListener("click", (e) => {
+  if (e.target.id.startsWith("deleteBtn")) {
+    const [, deleteId] = e.target.id.split("--");
+    deleteEntry(parseInt(deleteId));
+  }
+});
 //TODO deal with how to update mood?

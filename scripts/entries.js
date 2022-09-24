@@ -1,11 +1,13 @@
 import { getEntries, deleteEntry } from "./dataAccess.js";
 
-//^importing journal entry duplication function
+//^importing journal entry duplication function and delete entry function
 
-//OBJECTIVE: Write a function that takes in the date from the journal entry and returns the day of the week that entry occurred. Display the day of the week in the journal entry card.
+//TODO refactor sort and filter to be handled using fetch calls rather than vanilla JS
 
+//Big functions that encapsulates all logic for displaying and filtering/sorting entries
 export const JournalEntries = () => {
   const journalEntries = getEntries();
+  //OBJECTIVE: Write a function that takes in the date from the journal entry and returns the day of the week that entry occurred. Display the day of the week in the journal entry card.
   const findDay = (date) => {
     const d = new Date(date);
     const daysOfWeek = [
@@ -59,7 +61,8 @@ export const JournalEntries = () => {
     document.getElementById("entries").innerHTML = htmlSection;
   };
   displayEntries(journalEntries);
-  // displayEntries(journalEntries)
+  //^puts unsorted JournalEntries on page by default.
+
   //^Testing function
 
   //OBJECTIVE: create a way to filter array by mood. by the user interacting with the HTML
@@ -119,17 +122,5 @@ export const JournalEntries = () => {
     displayEntries(journalEntries);
   };
   sortElement.addEventListener("change", sortArray);
-
-  document.addEventListener("click", (e) => {
-    if (e.target.id.startsWith("deleteBtn")) {
-      const [, deleteId] = e.target.id.split("--");
-      deleteEntry(parseInt(deleteId));
-    }
-  });
+  //^listens for dropdown menu selection to change, and runs sort array when that value does change.
 };
-
-//^puts unsorted JournalEntries on page by default.
-
-//^listens for dropdown menu selection to change, and runs sort array when that value does change.
-
-//TODO: Think of a way to have the filtered array interact with filter options. currently, sorting then filtering works, but filtering then sorting doesn't, because the filter returns a new array that the sort fucntion doesn't know about.
