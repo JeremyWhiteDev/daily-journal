@@ -7,12 +7,26 @@
     transform: translate(-50%, -50%);
     background-color: white;
     width: 80%;
-    max-width: 400px;
+    max-width: 500px;
     z-index: 10;
+    box-sizing: border-box;
     /* padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 0 px black;
     */
+}
+
+#modal.active {
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 px black;
+   margin: auto;
+
+}
+
+#modal fieldset {
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /*Styling for overlay; opacity 0 by default*/

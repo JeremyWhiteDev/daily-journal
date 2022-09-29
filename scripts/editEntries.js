@@ -50,6 +50,7 @@ document.addEventListener("click", (e) => {
 
     document.getElementById("modal").innerHTML =
       displayUpdateEntryForm(foundEntry);
+    document.getElementById("modal").classList.add("active");
     document.getElementById("overlay").classList.add("active");
   }
 });
@@ -69,6 +70,7 @@ document.addEventListener("click", (e) => {
     };
     updateEntry(entryId, newObj);
     document.getElementById("modal").innerHTML = "";
+    document.getElementById("modal").classList.remove("active");
     document.getElementById("overlay").classList.remove("active");
   }
 });
@@ -77,6 +79,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.id === "closeModalBtn" || e.target.id === "overlay") {
     document.getElementById("modal").innerHTML = "";
+    document.getElementById("modal").classList.remove("active");
     document.getElementById("overlay").classList.remove("active");
   }
 });
@@ -89,3 +92,14 @@ document.addEventListener("click", (e) => {
   }
 });
 //TODO deal with how to update mood?
+
+//TODO change Navbar.... what can be useful links? new journal entry button? manage entries page? edit user page? Edit view page? Darkmode button/toggle?
+
+//sticky navbar/navbar with animation/interaction when scrolling
+
+//Create new entry modal
+
+//TODO fix pinned post issues.
+//display posts from application state.
+//change css/html structure to better render them. Maybe only displaying post title/mood/date?
+//
